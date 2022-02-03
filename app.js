@@ -16,17 +16,19 @@ ctx.fillStyle = "white";
 ctx.fillRect(0,0,800,700);  
 ctx.strokeStyle = initialColor;
 ctx.fillStyle = initialColor;
-ctx.lineWidth = 2.5;
+ctx.lineWidth = 2.5;    
 
 
-
+let isCursorOnCanvas = false;
 let painting = false;
 let filling  = false;
 function startPainting(){
+    isCursorOnCanvas = true;
     painting = true;
 }
 
 function stopPainting(){
+    isCursorOnCanvas = false;
     painting = false;
 }
 function onMouseMove(event){
@@ -91,11 +93,16 @@ function handleSave(){
 function handleClear(event){
     ctx.clearRect(0,0,800,700);
 }
+
+function mouseLeave(){
+    stopPainting();
+    
+}
 if(canvas){
     canvas.addEventListener("mousemove",onMouseMove);
     canvas.addEventListener("mousedown", startPainting);
     canvas.addEventListener("mouseup", stopPainting);
-    canvas.addEventListener("mouseleave", stopPainting);
+    canvas.addEventListener("mouseleave", mouseLeave);
     canvas.addEventListener("mousedown", handleCanvasClick);
     canvas.addEventListener("contextmenu", handleMenu);    
 }
