@@ -83,6 +83,10 @@ function handleSave(){
 
     link.click();
 }
+
+function handleClear(event){
+    ctx.clearRect(0,0,800,700);
+}
 if(canvas){
     canvas.addEventListener("mousemove",onMouseMove);
     canvas.addEventListener("mousedown", startPainting);
@@ -107,4 +111,7 @@ if(mode){
 
 if(saveButton){
     saveButton.addEventListener("click", handleSave);
+}
+if(clearButton){
+    clearButton.addEventListener("click", handleClear);
 }
