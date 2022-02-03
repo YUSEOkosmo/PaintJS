@@ -16,7 +16,7 @@
             <input type="range" id="jsRange" min="0.5" max="10.0" value="5.0" step="0.1" />
         </div>
         <div class="controls_buttons">
-            <button id="jsMode">Fill</button>
+            <button id="jsMode">PaintMode</button>
             <button id="jsSave">Save</button>
             <button id="jsClear">Clear</button>
         </div>
@@ -30,7 +30,14 @@
             <div class="controls_color jsColor" style="background-color: blue"></div>
             <div class="controls_color jsColor" style="background-color: #5956D6"></div>
             <div class="controls_color jsColor" style="background-color: violet"></div>
-
+        </div>
+        <div>
+            <div>
+                <a>CurrentColor = </a> <a id="currentColor"></a>
+            </div>
+            <div>
+                <a>brushSize = </a> <a id="brushSize"></a>
+            </div>
         </div>
     </div>
     <script src="app.js"></script>

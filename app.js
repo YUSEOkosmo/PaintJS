@@ -6,6 +6,8 @@ const mode = document.getElementById("jsMode");
 const initialColor = "black";
 const saveButton = document.getElementById("jsSave");
 const clearButton = document.getElementById("jsClear");
+const currentColor = document.getElementById("currentColor");
+const brushSize = document.getElementById("brushSize");
 
 canvas.width = 800;
 canvas.height = 700;
@@ -45,21 +47,23 @@ function changeColor(event){
     const color = event.target.style.backgroundColor;
     ctx.strokeStyle = color;
     ctx.fillStyle = ctx.strokeStyle;
+    currentColor.innerHTML = color;
 }
 
 function handleBrushSize(event){
     const size = event.target.value;
     ctx.lineWidth = size;
+    brushSize.innerHTML = size;
 }
 
 function handleMode(){
     if(filling == true){
         filling = false;
-        mode.innerText = "Fill";
+        mode.innerText = "PaintMode";
         mode.style.backgroundColor = "white";
     } else {
         filling = true;
-        mode.innerText = "Paint";
+        mode.innerText = "FillMode";
         mode.style.backgroundColor = "blue";
     }
 
@@ -92,7 +96,7 @@ if(canvas){
     canvas.addEventListener("mousedown", startPainting);
     canvas.addEventListener("mouseup", stopPainting);
     canvas.addEventListener("mouseleave", stopPainting);
-    canvas.addEventListener("click", handleCanvasClick);
+    canvas.addEventListener("mousedown", handleCanvasClick);
     canvas.addEventListener("contextmenu", handleMenu);    
 }
 
